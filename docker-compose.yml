@@ -12,7 +12,7 @@ services:
      - "1984:1984"
     restart: always
     env_file:
-      - startup.env
+      - ./startup.env
     environment:
       AR_RUNMODE: ${AR_RUNMODE} #set to <-r test> for hashrate benchmarking 
                                 #set to prod for normal operation <prod>
