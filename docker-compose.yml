@@ -12,7 +12,7 @@ services:
       - "1984:1984"
     restart: always
     environment:
-      AR_RUNMODE: ${AR_RUNMODE} #set to <-r test> in .env for hashrate benchmarking 
+      AR_RUNMODE: ${AR_RUNMODE?err} #set to <-r test> in .env for hashrate benchmarking 
                                 #set to prod for normal operation <prod>
     volumes:
       - "../ardata:/mnt/arweave-data"

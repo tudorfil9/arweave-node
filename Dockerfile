@@ -19,7 +19,7 @@ RUN chmod +x start_w_epmd.sh
 
 ARG AR_RUNMODE
 
-ENTRYPOINT [ "./start_w_epmd.sh" ]
+ENTRYPOINT [ "./start_w_epmd.sh", "-r ${AR_RUNMODE}" ]
 
 # Add metadata to the image to describe which port the container is listening on at runtime.
 EXPOSE 1984
