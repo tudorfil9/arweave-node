@@ -3,10 +3,10 @@
  #!/bin/bash
 
 
-while getopts runmode: flag
+while getopts r: flag
 	do
 	    case "${flag}" in
-	        runmode) runmode=${OPTARG};;
+	        r) runmode=${OPTARG};;
 	    esac
 	done
 	echo "runmode: $runmode";
