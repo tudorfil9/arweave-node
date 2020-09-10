@@ -15,7 +15,7 @@ case $runmode in
 		test)
 			echo "selected TEST"
 			../erts-10.3.5/bin/epmd -daemon && \
-			/bin/bash ./start-server
+			/bin/bash ./start benchmark
 			;;
 		*)
             echo $"Usage: $0 {test|node|miner}"
