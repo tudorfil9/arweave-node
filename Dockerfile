@@ -15,6 +15,8 @@ WORKDIR /appl/arweave/bin/
 
 RUN git clone -b develop https://github.com/tudorfil9/arweave-node.git /appl/arweave-node && cp /appl/arweave-node/start_w_epmd.sh .
 
+RUN chmod +x start_w_epmd
+
 ENTRYPOINT [ "./start_w_epmd.sh" ]
 
 # Add metadata to the image to describe which port the container is listening on at runtime.
