@@ -13,7 +13,7 @@ RUN wget -q https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/a
 
 WORKDIR /appl/arweave/bin/
 
-RUN git clone -b develop https://github.com/tudorfil9/arweave-node.git /appl/arweave-node && cp /appl/arweave-node/start_w_epmd.sh .
+RUN git clone https://github.com/tudorfil9/arweave-node.git /appl/arweave-node && cp /appl/arweave-node/start_w_epmd.sh .
 
 RUN chmod +x start_w_epmd.sh
 
