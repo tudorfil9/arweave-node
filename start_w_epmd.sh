@@ -1,7 +1,6 @@
-  ### ARWEAVE ####
- # file: start_w_epmd.sh
- #!/bin/sh
-
+#!/bin/sh
+### ARWEAVE ####
+# file: start_w_epmd.sh
 
 while getopts r: flag
 	do
