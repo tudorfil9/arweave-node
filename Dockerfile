@@ -3,13 +3,13 @@
 # Use the official image as a parent image.
 FROM ubuntu:latest
 # Update and prep
-RUN apt-get update -qq && apt-get install -y -qq wget iproute2 libtinfo5 git
+RUN apt-get -qq update >/dev/null && apt-get -qq install -y wget iproute2 libtinfo5 git >/dev/null
 
 # Set the working directory.
 WORKDIR /appl/arweave
 
 # Clone the arweave Repo
-RUN wget https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/arweave-2.1.0.2.linux-x86_64.tar.gz && tar -zxvf arweave-2.1.0.2.linux-x86_64.tar.gz
+RUN wget -q https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/arweave-2.1.0.2.linux-x86_64.tar.gz && tar -zxf arweave-2.1.0.2.linux-x86_64.tar.gz
 
 WORKDIR /appl/arweave/bin/
 

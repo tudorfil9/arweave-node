@@ -11,7 +11,16 @@ while getopts r: flag
 	done
 	echo "runmode: $runmode";
 
-
+case $runmode in
+		test)
+			echo "selected TEST"
+			../erts-10.3.5/bin/epmd -daemon && \
+			/bin/bash ./start
+			;;
+		*)
+            echo $"Usage: $0 {test|node|miner}"
+            exit 1
+esac
 # ../erts-10.3.5/bin/epmd -daemon && \
 # /bin/bash ./start data_dir /mnt/arweave-data \
 #                     max_miners 0 \
