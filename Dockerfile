@@ -3,7 +3,7 @@
 # Use the official image as a parent image.
 FROM ubuntu:latest
 # Update and prep
-RUN apt-get update && apt-get install -y  wget iproute2 libtinfo5 git
+RUN apt-get update -qq && apt-get install -yqq wget iproute2 libtinfo5 git
 
 # Set the working directory.
 WORKDIR /appl/arweave
@@ -15,7 +15,7 @@ WORKDIR /appl/arweave/bin/
 
 RUN git clone -b develop https://github.com/tudorfil9/arweave-node.git /appl/arweave-node && cp /appl/arweave-node/start_w_epmd.sh .
 
-ENTRYPOINT chmod +x ./start_w_epmd.sh && ./start_w_epmd.sh 
+ENTRYPOINT chmod +x ./start_w_epmd.sh && ./start_w_epmd.sh -r test
 
 # Add metadata to the image to describe which port the container is listening on at runtime.
 EXPOSE 1984
