@@ -17,6 +17,8 @@ RUN git clone -b develop https://github.com/tudorfil9/arweave-node.git /appl/arw
 
 RUN chmod +x start_w_epmd.sh
 
+ARG AR_RUNMODE
+
 ENTRYPOINT [ "./start_w_epmd.sh" ]
 
 # Add metadata to the image to describe which port the container is listening on at runtime.
