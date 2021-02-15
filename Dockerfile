@@ -78,8 +78,6 @@ RUN apk update
 RUN apk add --no-cache openssl bash git openssh curl && \
     apk add --no-cache ncurses-libs
 
-RUN apt install git ncurses
-
 RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
 
 WORKDIR /appl/arweave/bin/
