@@ -4,11 +4,14 @@
 #FROM erlang:alpine
 
 
-FROM bitwalker/alpine-erlang as intermediate
+# FROM bitwalker/alpine-erlang as intermediate
+FROM ubuntu:20.04 as intermediate
 
 ARG SSH_PRIVATE_KEY
 
-RUN apk update && apk add --no-cache openssh
+# RUN apk update && apk add --no-cache openssh
+RUN apt update
+RUN apt install openssh curl git 
 RUN mkdir /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
@@ -17,7 +20,8 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone --recursive git@github.com:ArweaveTeam/arweave-private.git /opt/arweave
 
 
-FROM bitwalker/alpine-erlang:latest
+# FROM bitwalker/alpine-erlang:latest
+FROM ubuntu:20.04
 COPY --from=intermediate /opt/arweave /opt/arweave
 
 
@@ -30,14 +34,15 @@ WORKDIR /appl/arweave
 # Clone the arweave Repo
 #RUN wget -q https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/arweave-2.1.0.2.linux-x86_64.tar.gz && tar -zxf arweave-2.1.0.2.linux-x86_64.tar.gz
 
-RUN apk update 
+# RUN apk update 
 
-RUN apk add --no-cache openssl bash git openssh curl && \
-    apk add --no-cache ncurses-libs
+# RUN apk add --no-cache openssl bash git openssh curl && \
+#     apk add --no-cache ncurses-libs
    
-RUN apk add build-base gcc abuild binutils binutils-doc gcc-doc
-RUN apk add cmake cmake-doc extra-cmake-modules extra-cmake-modules-doc
-
+# RUN apk add build-base gcc abuild binutils binutils-doc gcc-doc
+# RUN apk add cmake cmake-doc extra-cmake-modules extra-cmake-modules-doc
+RUN apt update
+RUN apt install openssh curl git wget
 
 RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
 
