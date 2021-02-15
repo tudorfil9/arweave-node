@@ -1,10 +1,13 @@
  ### ARWEAVE ####
  # file: Dockerfile
 # Use the official image as a parent image.
-FROM erlang:alpine
-ENV OTP_VERSION="22.3.4.15" \
-    REBAR3_VERSION="3.14.3"
-LABEL org.opencontainers.image.version=$OTP_VERSION    
+#FROM erlang:alpine
+FROM bitwalker/alpine-erlang:latest
+
+
+# ENV OTP_VERSION="22.3.4.15" \
+#     REBAR3_VERSION="3.14.3"
+# LABEL org.opencontainers.image.version=$OTP_VERSION    
 # # Update and prep
 # RUN set -xe \
 # 	&& OTP_DOWNLOAD_URL="https://github.com/erlang/otp/archive/OTP-${OTP_VERSION}.tar.gz" \
@@ -73,10 +76,10 @@ WORKDIR /appl/arweave
 # Clone the arweave Repo
 #RUN wget -q https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/arweave-2.1.0.2.linux-x86_64.tar.gz && tar -zxf arweave-2.1.0.2.linux-x86_64.tar.gz
 
-RUN apk update 
+# RUN apk update 
 
-RUN apk add --no-cache openssl bash git openssh curl && \
-    apk add --no-cache ncurses-libs
+# RUN apk add --no-cache openssl bash git openssh curl && \
+#     apk add --no-cache ncurses-libs
 
 RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
 
