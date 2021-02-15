@@ -73,6 +73,13 @@ WORKDIR /appl/arweave
 # Clone the arweave Repo
 #RUN wget -q https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/arweave-2.1.0.2.linux-x86_64.tar.gz && tar -zxf arweave-2.1.0.2.linux-x86_64.tar.gz
 
+RUN apt update 
+
+RUN apk add --no-cache openssl && \
+    apk add --no-cache ncurses-libs
+
+RUN apt install git ncurses
+
 RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
 
 WORKDIR /appl/arweave/bin/
