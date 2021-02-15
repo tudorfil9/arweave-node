@@ -1,7 +1,7 @@
  ### ARWEAVE ####
  # file: Dockerfile
 # Use the official image as a parent image.
-FROM buildpack-deps:buster
+FROM ubuntu:latest
 ENV OTP_VERSION="22.3.4.15" \
     REBAR3_VERSION="3.14.3"
 LABEL org.opencontainers.image.version=$OTP_VERSION    
