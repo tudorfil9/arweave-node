@@ -13,8 +13,8 @@ while getopts r: flag
 case $runmode in
 		test)
 			echo "selected TEST"
-			../erts-10.3.5/bin/epmd -daemon && \
-			/bin/bash ./start benchmark
+			#../erts-10.3.5/bin/epmd -daemon && \
+			/bin/bash ./start 
 			;;
 		normal)
 			echo "selected NORMAL"
