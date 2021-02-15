@@ -32,7 +32,6 @@ WORKDIR /appl/arweave
 # RUN apk add --no-cache openssl bash git openssh curl && \
 #     apk add --no-cache ncurses-libs
 
-RUN git clone --recursive git@github.com:ArweaveTeam/arweave-private.git /opt/arweave
 
 RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
 
