@@ -8,6 +8,8 @@
 
 1. Run `docker-compose build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_rsa)"`
 2. Wait for the image to be built
+3. Run `docker-compose up -d`
+
 
 ## Running the deployed image
 
