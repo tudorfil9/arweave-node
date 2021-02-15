@@ -34,6 +34,9 @@ RUN apk update
 
 RUN apk add --no-cache openssl bash git openssh curl && \
     apk add --no-cache ncurses-libs
+   
+RUN apk add build-base gcc abuild binutils binutils-doc gcc-doc
+RUN apk add cmake cmake-doc extra-cmake-modules extra-cmake-modules-doc
 
 
 RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
