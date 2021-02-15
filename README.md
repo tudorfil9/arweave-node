@@ -6,7 +6,7 @@
 ## Building the image for DEPLOYMENT
 
 
-1. Run `docker-compose build --run -e "-runmode=test"`
+1. Run `docker-compose build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_rsa)"`
 2. Wait for the image to be built
 
 ## Running the deployed image
