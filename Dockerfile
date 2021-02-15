@@ -11,10 +11,10 @@ RUN set -xe \
 	&& OTP_DOWNLOAD_SHA256="05d388ee252fd04a8e9e62f3ea7be3b45a19f698d978452933a21138a383e80d" \
 	&& runtimeDeps='libodbc1 \
 			libsctp1 \
-			libwxgtk' \
+			libwxgtk3.0-gtk3' \
 	&& buildDeps='unixodbc-dev \
 			libsctp-dev \
-			libwxgtk-dev' \
+			libwxgtk3.0-gtk3-dev' \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends $runtimeDeps \
 	&& apt-get install -y --no-install-recommends $buildDeps \
