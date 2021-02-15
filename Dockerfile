@@ -3,7 +3,7 @@
 # Use the official image as a parent image.
 FROM ubuntu:latest
 # Update and prep
-RUN apt-get -qq update >/dev/null && apt-get -qq install -y wget iproute2 libtinfo5 git >/dev/null
+RUN apt-get -qq update >/dev/null && apt-get -qq install -y wget iproute2 libtinfo5 git apt-utils >/dev/null
 
 # Set the working directory.
 WORKDIR /appl/arweave
