@@ -8,7 +8,7 @@ FROM bitwalker/alpine-erlang as intermediate
 
 ARG SSH_PRIVATE_KEY
 
-RUN apk update && apk add --no-cache ssh-keyscan
+RUN apk update && apk add --no-cache openssh
 RUN mkdir /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
 RUN touch /root/.ssh/known_hosts
