@@ -23,24 +23,14 @@ RUN git clone --recursive git@github.com:ArweaveTeam/arweave-private.git /opt/ar
 # FROM bitwalker/alpine-erlang:latest
 FROM ubuntu:20.04
 COPY --from=intermediate /opt/arweave /opt/arweave
-
-
 CMD ["erl"]
-
- 
- 
 WORKDIR /appl/arweave
 
 # Clone the arweave Repo
 #RUN wget -q https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/arweave-2.1.0.2.linux-x86_64.tar.gz && tar -zxf arweave-2.1.0.2.linux-x86_64.tar.gz
 
-# RUN apk update 
 
-# RUN apk add --no-cache openssl bash git openssh curl && \
-#     apk add --no-cache ncurses-libs
-   
-# RUN apk add build-base gcc abuild binutils binutils-doc gcc-doc
-# RUN apk add cmake cmake-doc extra-cmake-modules extra-cmake-modules-doc
+RUN rm -rf /var/lib/apt/lists/*
 RUN apt update
 RUN apt install openssh curl git wget
 
