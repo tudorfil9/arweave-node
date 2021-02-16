@@ -13,7 +13,7 @@ ARG SSH_PRIVATE_KEY
 RUN apt update
 RUN DEBIAN_FRONTEND="noninteractive" apt install tzdata -y
 RUN apt install -y openssh-server curl git 
-RUN mkdir /root/.ssh/
+RUN mkdir -p /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
 RUN touch /root/.ssh/known_hosts
@@ -27,7 +27,7 @@ RUN apt update
 COPY --from=intermediate /opt/arweave /opt/arweave
 RUN DEBIAN_FRONTEND="noninteractive" apt install tzdata -y
 # CMD ["erl"]
-RUN mkdir /opt/arweave
+RUN mkdir -p /opt/arweave
 WORKDIR /opt/arweave
 
 # Clone the arweave Repo
