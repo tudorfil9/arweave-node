@@ -27,7 +27,8 @@ ENV TZ=Europe/Berlin
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 CMD ["erl"]
-WORKDIR /appl/arweave
+RUN mkdir /opt/arweave
+WORKDIR /opt/arweave
 
 # Clone the arweave Repo
 #RUN wget -q https://github.com/ArweaveTeam/arweave/releases/download/N.2.1.0.2/arweave-2.1.0.2.linux-x86_64.tar.gz && tar -zxf arweave-2.1.0.2.linux-x86_64.tar.gz
@@ -37,11 +38,11 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN apt update
 RUN apt install -y openssh-server curl git wget
 
-RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
+RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs -C /opt/arweave/
 
-WORKDIR /appl/arweave/bin/
+WORKDIR /opt/arweave/bin/
 
-RUN git clone https://github.com/tudorfil9/arweave-node.git /appl/arweave-node && cp /appl/arweave-node/start_w_epmd.sh .
+RUN git clone https://github.com/tudorfil9/arweave-node.git /opt/arweave/ && cp /opt/arweave/bin/start_w_epmd.sh .
 
 RUN chmod +x start_w_epmd.sh
 
