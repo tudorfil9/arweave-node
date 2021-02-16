@@ -42,7 +42,7 @@ RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && t
 
 WORKDIR /opt/arweave/bin/
 
-RUN git clone https://github.com/tudorfil9/arweave-node.git /opt/arweave/ && cp /opt/arweave/bin/start_w_epmd.sh .
+RUN git clone https://github.com/tudorfil9/arweave-node.git /opt/arweave/ && cp /opt/arweave/start_w_epmd.sh .
 
 RUN chmod +x start_w_epmd.sh
 
