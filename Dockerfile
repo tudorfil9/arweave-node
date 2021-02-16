@@ -6,7 +6,9 @@
 
 # FROM bitwalker/alpine-erlang as intermediate
 FROM ubuntu:20.04 as intermediate
+ENV TZ=Europe/Berlin
 
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 ARG SSH_PRIVATE_KEY
 
 # RUN apk update && apk add --no-cache openssh
