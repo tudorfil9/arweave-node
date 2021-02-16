@@ -11,7 +11,7 @@ ARG SSH_PRIVATE_KEY
 
 # RUN apk update && apk add --no-cache openssh
 RUN apt update
-RUN apt install openssh-server curl git 
+RUN apt install -y openssh-server curl git 
 RUN mkdir /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
@@ -32,7 +32,7 @@ WORKDIR /appl/arweave
 
 RUN rm -rf /var/lib/apt/lists/*
 RUN apt update
-RUN apt install openssh-server curl git wget
+RUN apt install -y openssh-server curl git wget
 
 RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs
 
