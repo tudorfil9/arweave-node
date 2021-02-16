@@ -11,6 +11,7 @@ ARG SSH_PRIVATE_KEY
 
 # RUN apk update && apk add --no-cache openssh
 RUN apt update
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN apt install -y openssh-server curl git 
 RUN mkdir /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
@@ -23,9 +24,7 @@ RUN git clone --recursive git@github.com:ArweaveTeam/arweave-private.git /opt/ar
 # FROM bitwalker/alpine-erlang:latest
 FROM ubuntu:20.04
 COPY --from=intermediate /opt/arweave /opt/arweave
-ENV TZ=Europe/Berlin
-
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 CMD ["erl"]
 RUN mkdir /opt/arweave
 WORKDIR /opt/arweave
