@@ -23,6 +23,7 @@ RUN git clone --recursive git@github.com:ArweaveTeam/arweave-private.git /opt/ar
 
 # FROM bitwalker/alpine-erlang:latest
 FROM ubuntu:20.04
+RUN apt update
 COPY --from=intermediate /opt/arweave /opt/arweave
 RUN DEBIAN_FRONTEND="noninteractive" apt install tzdata -y
 # CMD ["erl"]
