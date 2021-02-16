@@ -11,7 +11,7 @@ ARG SSH_PRIVATE_KEY
 
 # RUN apk update && apk add --no-cache openssh
 RUN apt update
-#RUN apt install -y openssh-server curl git 
+RUN apt install -y openssh-server curl git 
 RUN mkdir /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
