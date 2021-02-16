@@ -25,7 +25,7 @@ RUN git clone --recursive git@github.com:ArweaveTeam/arweave-private.git /opt/ar
 FROM ubuntu:20.04
 COPY --from=intermediate /opt/arweave /opt/arweave
 RUN DEBIAN_FRONTEND="noninteractive" apt install tzdata -y
-CMD ["erl"]
+# CMD ["erl"]
 RUN mkdir /opt/arweave
 WORKDIR /opt/arweave
 
