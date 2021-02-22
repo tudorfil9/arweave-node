@@ -1,0 +1,18 @@
+FROM bitwalker/alpine-erlang:latest
+
+# Set exposed ports
+EXPOSE 1984
+ENV PORT=1984
+
+ENV MIX_ENV=test
+
+CMD mkdir -p /opt/arweave/
+
+ADD arweave_precompiled.tar.gz /opt/arweave/
+
+#CMD useradd -m arweave
+
+#USER arweave
+
+ENTRYPOINT ["/bin/bash"]
+#CMD ["foreground"]

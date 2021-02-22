@@ -1,0 +1,37 @@
+ ### ARWEAVE ####
+# file: Dockerfile
+FROM ubuntu:20.04
+
+# RUN apk update && apk add --no-cache openssh
+RUN apt install --fix-broken
+RUN apt update
+RUN DEBIAN_FRONTEND="noninteractive" apt install tzdata -y
+RUN apt install -y openssh-server curl git vim gnupg2 iputils-ping
+RUN mkdir -p /root/.ssh/
+RUN touch /root/.ssh/known_hosts
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+RUN git clone --branch feature/testnet --recursive https://github.com/ArweaveTeam/arweave.git /opt/arweave
+
+WORKDIR /root/
+
+RUN wget -O erlang_solutions.asc https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc 
+RUN apt-key add ./erlang_solutions.asc
+
+RUN echo "deb https://packages.erlang-solutions.com/ubuntu focal contrib" | tee /etc/apt/sources.list.d/erlang.list
+
+WORKDIR /opt/arweave
+
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN apt update
+
+RUN apt install -y esl-erlang=1:22.3.4.9-1
+
+RUN wget -q -O arweave-testnet.tar.gz https://arweave.net/m1yHyHttpBzg5oJhPEV3NC7uhRHDZ3S4rPQNCwC5r3Q && tar -zxf ./arweave-testnet.tar.gz -C /opt/arweave/
+
+CMD ["/opt/arweave/bin/start"]
+
+# Add metadata to the image to describe which port the container is listening on at runtime.
+EXPOSE 1984
+
+

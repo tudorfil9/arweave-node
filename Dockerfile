@@ -36,21 +36,30 @@ WORKDIR /opt/arweave
 
 RUN rm -rf /var/lib/apt/lists/*
 RUN apt update
-RUN apt install -y openssh-server curl git wget
+RUN apt install -y openssh-server curl git wget gnupg iputils-ping cmake gcc make build-essential autoconf m4 libncurses5-dev libssh-dev libsqlite3-dev vim
 
-RUN wget -q https://arweave.net/Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs && tar -zxf Qs3pcYEvkzwi-R6AjrwfZ5WfDHpyk838QXcDRizVJZs -C /opt/arweave/
+RUN curl https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb -o erlang.deb && dpkg -i erlang.deb
+
+RUN apt update
+RUN apt install -y erlang
+
+# RUN wget -q https://arweave.net/pRXqbfNtrHdbFO-pPewlVqIuRTRU7kiarADWFwHTlXw && tar -zxf pRXqbfNtrHdbFO-pPewlVqIuRTRU7kiarADWFwHTlXw -C /opt/arweave/
 
 WORKDIR /opt/arweave/bin/
 
-RUN git clone https://github.com/tudorfil9/arweave-node.git /opt/arweave-node/ && cp /opt/arweave-node/start_w_epmd.sh .
+# RUN git clone https://github.com/tudorfil9/arweave-node.git /opt/arweave-node/ && cp /opt/arweave-node/start_w_epmd.sh .
 
-RUN chmod +x start_w_epmd.sh
+# RUN chmod +x start_w_epmd.sh
 
 ARG AR_RUNMODE="test"
 
 ENV AR_RUNMODE=${AR_RUNMODE}
 
-ENTRYPOINT ./start_w_epmd.sh -r $AR_RUNMODE
+# ENTRYPOINT ./start_w_epmd.sh -r $AR_RUNMODE
+
+# CMD "/opt/arweave/bin/start"
+
+CMD ["/bin/ping","localhost"]
 
 # Add metadata to the image to describe which port the container is listening on at runtime.
 EXPOSE 1984
